@@ -25,10 +25,10 @@ const AddNote = (req, res) => {
 
 const ListNote = (req, res) => {
   const {
-    query: { _id }
+    query: { _id, userid }
   } = req;
 
-  Notes.findOne({ _id }, (error, response) => {
+  Notes.findOne({ _id, userID: userid }, (error, response) => {
     if (error) {
       res.json({ errorMessage: "Não foi possível verificar as notes", error });
     } else {
@@ -39,14 +39,14 @@ const ListNote = (req, res) => {
 
 const ListAllNotes = (req, res) => {
   const {
-    query: { _id }
+    query: { userid }
   } = req;
 
-  Notes.find({}, (error, notes) => {
+  Notes.find({ userID: userid }, (error, response) => {
     if (error) {
       res.json({ errorMessage: "Não foi possível verificar as notas", error });
     } else {
-      res.json({ response: { ...notes } });
+      res.json({ response });
     }
   });
 };
@@ -72,7 +72,7 @@ const UpdateNote = (req, res) => {
   const { _id } = params;
   if (!_id) {
     return res.status(400).json({
-      errorMessage: `Não foi possível atualizar a nota`
+      errorMessage: `Não foi possível atualizar a nota: sem id ${_id}`
     });
   }
   Notes.updateOne(
