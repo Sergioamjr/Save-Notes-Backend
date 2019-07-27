@@ -1,11 +1,17 @@
 var Notes = require("./schema.js");
 var _get = require("lodash").get;
+var moment = require("moment");
 
 const AddNote = (req, res) => {
   const {
     body: { params }
   } = req;
-  const newNote = new Notes(params);
+  const newNote = new Notes({
+    ...params,
+    lastModification: moment()
+      .utc()
+      .format()
+  });
   newNote.save((error, doc) => {
     if (error) {
       res
@@ -22,11 +28,11 @@ const ListNote = (req, res) => {
     query: { _id }
   } = req;
 
-  Notes.findOne({ _id }, (error, notes) => {
+  Notes.findOne({ _id }, (error, response) => {
     if (error) {
       res.json({ errorMessage: "Não foi possível verificar as notes", error });
     } else {
-      res.json({ response: { ...notes } });
+      res.json({ response });
     }
   });
 };
@@ -64,11 +70,21 @@ const UpdateNote = (req, res) => {
     body: { params }
   } = req;
   const { _id } = params;
+  if (!_id) {
+    return res.status(400).json({
+      errorMessage: `Não foi possível atualizar a nota`
+    });
+  }
   Notes.updateOne(
     {
       _id
     },
-    params,
+    {
+      ...params,
+      lastModification: moment()
+        .utc()
+        .format()
+    },
     error => {
       if (error) {
         res.status(400).json({
