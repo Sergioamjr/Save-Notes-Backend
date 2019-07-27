@@ -17,7 +17,7 @@ const AddNote = (req, res) => {
   });
 };
 
-const ListNotes = (req, res) => {
+const ListNote = (req, res) => {
   const {
     query: { _id }
   } = req;
@@ -83,7 +83,7 @@ const UpdateNote = (req, res) => {
 
 module.exports = {
   AddNote,
-  ListNotes,
+  ListNote,
   ListAllNotes,
   DeleteNote,
   UpdateNote
