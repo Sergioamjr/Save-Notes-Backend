@@ -8,7 +8,7 @@ Backend do Criador de Notas desenvolvido como teste técnico para posicão de Fr
 
 ## Para clonar
 
-`git@github.com:Sergioamjr/save-notes-backend.git`
+`git clone git@github.com:Sergioamjr/save-notes-backend.git`
 
 ## Para instalar as depedências
 
@@ -26,6 +26,6 @@ Por padrão, o projeto é iniciado em `http://localhost:3001`
 
 Projeto foi hospedado no Heroku, na url `https://save-notes-backend.herokuapp.com`
 
-# Front End
+# FrontEnd
 
 Para testar localmente, é recomendável clonar e configurar o Front End, que se encontra [desse repositório](https://github.com/Sergioamjr/Save-Notes).
