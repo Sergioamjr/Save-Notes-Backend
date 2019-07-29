@@ -8,7 +8,7 @@ Backend do Criador de Notas desenvolvido como teste técnico para posicão de Fr
 
 ## Para clonar
 
-`git clone git@github.com:Sergioamjr/save-notes-backend.git`
+`git clone git@github.com:Sergioamjr/Save-Notes-Backend.git`
 
 ## Para instalar as depedências
 
