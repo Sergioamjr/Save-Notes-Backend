@@ -6,7 +6,7 @@ Backend do Criador de Notas desenvolvido como teste técnico para posicão de Fr
 
 `NodeJS, Express, Mongoose, MongoDB.`
 
-## Para clonar
+## Para clonar o projeto
 
 `git clone git@github.com:Sergioamjr/Save-Notes-Backend.git`
 
